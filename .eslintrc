@@ -1,0 +1,11 @@
+{
+  "extends": "standard",
+  "rules": {
+    "array-bracket-spacing": ["error", "always"],
+    "no-extend-native": "off",
+    "no-multiple-empty-lines": [ "error", { "max": 2, "maxEOF": 0 } ],
+    "no-new": "off",
+    "semi": [ "error", "always" ],
+    "space-before-function-paren": ["error", "never"]
+  }
+}

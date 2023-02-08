@@ -1,0 +1,151 @@
+.#{$prefix}-grid {
+  display: block;
+  list-style: none;
+
+  margin-bottom: -(gutter());
+  margin-left: -(gutter());
+
+  text-align: left;
+  font-size: 0;
+  white-space: normal;
+
+
+  // Modifiers
+  &--flush {
+    margin-bottom: 0;
+    margin-left: 0;
+
+    > .#{$prefix}-grid__item {
+      margin-bottom: 0;
+      padding-left: 0;
+    }
+
+    @include responsive-classes(true) {
+      margin-bottom: 0;
+      margin-left: 0;
+
+      > .#{$prefix}-grid__item {
+        margin-bottom: 0;
+        padding-left: 0;
+      }
+    }
+  }
+
+  @each $gutter-name, $gutter in $gutters {
+
+    &--#{$gutter-name} {
+      margin-bottom: -$gutter;
+      margin-left: -$gutter;
+
+      > .#{$prefix}-grid__item {
+        margin-bottom: $gutter;
+        padding-left: $gutter;
+      }
+    }
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  &--middle > .#{$prefix}-grid__item {
+    vertical-align: middle;
+  }
+
+  &--bottom > .#{$prefix}-grid__item {
+    vertical-align: bottom;
+  }
+
+  @each $denominator in $grid-denominators {
+    $width: percentage(1 / $denominator);
+
+    &--#{$denominator} > .#{$prefix}-grid__item {
+      width: $width;
+    }
+  }
+
+
+  // Responsive
+  &--1 {
+
+    @include responsive-classes(true) {
+
+      > .#{$prefix}-grid__item {
+        width: 100%;
+      }
+    }
+  }
+
+  @each $denominator in $grid-denominators {
+    $width: percentage(1 / $denominator);
+
+    &--#{$denominator} {
+      @include responsive-classes(true) {
+
+        > .#{$prefix}-grid__item {
+          width: $width;
+        }
+      }
+    }
+  }
+
+  &--rtl {
+    direction: rtl;
+
+    @include responsive-classes {
+      direction: rtl;
+    }
+  }
+
+  &--ltr {
+    direction: ltr;
+
+    @include responsive-classes {
+      direction: ltr;
+    }
+  }
+}
+
+
+  .#{$prefix}-grid__item {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+
+    margin-bottom: gutter();
+    padding-left: gutter();
+
+    text-align: left;
+    font-size: font-size();
+    direction: ltr;
+
+
+    // Modifiers
+    &--1 {
+      width: 100%;
+
+      @include responsive-classes(true) {
+        width: 100%
+      }
+    }
+
+    @each $denominator in $grid-denominators {
+      @for $divisor from 1 through ($denominator - 1) {
+        $width: 100% / $denominator * $divisor;
+
+        &--#{$divisor}\/#{$denominator} {
+          width: $width;
+
+          @include responsive-classes(true) {
+            width: $width;
+          }
+        }
+      }
+    }
+  }

@@ -1,0 +1,11 @@
+.#{$prefix}-section {
+  position: relative;
+
+  padding: spacing('x-huge') spacing();
+
+  background-color: white;
+
+  @include breakpoint('small') {
+    padding: spacing('huge') spacing();
+  }
+}

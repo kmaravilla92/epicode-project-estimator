@@ -1,0 +1,88 @@
+// Linear gradient
+// --------------------------------
+@mixin linear-gradient($direction, $color-stops...) {
+  background: nth(nth($color-stops, 1), 1);
+  background: linear-gradient($direction, $color-stops);
+}
+
+
+// Retina images
+// --------------------------------
+@mixin retina-image($url, $filetype) {
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-image: url('../images/#{$url}.#{$filetype}');
+
+  @include breakpoint('retina') {
+    background-image: url('../images/#{$url}@2x.#{$filetype}');
+  }
+}
+
+
+// Add responsive classes
+// --------------------------------
+@mixin responsive-classes($up-down: false) {
+  @each $breakpoint-name, $breakpoint in $breakpoints {
+    @include breakpoint($breakpoint-name, 'only') {
+
+      &\@#{$breakpoint-name} {
+
+        @include specify {
+          @content;
+        }
+      }
+    }
+
+    @if $up-down {
+      @include breakpoint($breakpoint-name, 'up') {
+
+        &\@#{$breakpoint-name}-up {
+
+          @include specify {
+            @content;
+          }
+        }
+      }
+
+      @include breakpoint($breakpoint-name, 'down') {
+
+        &\@#{$breakpoint-name}-down {
+
+          @include specify {
+            @content;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// Create a simple utility class
+// --------------------------------
+@mixin utility($property, $value, $modifier: false) {
+  $modifier: if($modifier, '--#{$modifier}', '');
+
+  .#{$prefix}-u-#{$property}#{$modifier} {
+    #{$property}: $value !important;
+  }
+}
+
+
+// Absolute child
+// --------------------------------
+@mixin absolute-child($spacing: 0) {
+  position: absolute;
+  top: $spacing; bottom: $spacing; left: $spacing; right: $spacing;
+}
+
+
+// Create an extendable class (with silent class)
+// --------------------------------
+@mixin extendable($classname) {
+
+  .#{$prefix}-#{$classname},
+  %#{$prefix}-#{$classname} {
+    @content;
+  }
+}

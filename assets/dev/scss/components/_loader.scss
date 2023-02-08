@@ -1,0 +1,62 @@
+@include extendable('block-loader') {
+  position: relative;
+  overflow: hidden;
+  z-index: z-index();
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 100%; right: 0;
+    z-index: z-index('large');
+
+    background-color: rgba(white, 0.4);
+
+    opacity: 0;
+
+    transition:
+      bottom 0s 0.2s,
+      opacity 0.2s transition();
+
+    @include state('is-loading') {
+      bottom: 0;
+
+      opacity: 1;
+
+      transition:
+        bottom 0s,
+        opacity 0.2s transition();
+    }
+  }
+
+  &::after {
+    content: '';
+    display: none;
+    position: absolute;
+    top: 0; bottom: 0; left: 0;
+    width: 100%;
+    z-index: z-index('large');
+
+    transform: translateX(-100%);
+
+    background-image: linear-gradient(
+      90deg,
+      rgba(white, 0) 0%,
+      rgba(white, 0.4) 50%,
+      rgba(white, 0) 100%
+    );
+
+    @include state('is-loading') {
+      display: block;
+
+      animation: block-loader 1s linear infinite;
+      cursor: progress;
+    }
+  }
+}

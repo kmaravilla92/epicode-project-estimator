@@ -1,0 +1,11 @@
+.#{$prefix}-dot {
+  position: relative;
+  top: -1px;
+  display: inline-block;
+  width: spacing('3x-small');
+  height: spacing('3x-small');
+
+  background-color: color('success');
+  border: 1px solid color('success');
+  border-radius: 999px;
+}

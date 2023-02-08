@@ -1,0 +1,224 @@
+// Prefix
+// --------------------------------
+$prefix: 'epc';
+
+// Paths
+// --------------------------------
+$font-path: '../fonts';
+$image-path: '../images';
+
+
+// Unit defauls (used for calculations)
+// --------------------------------
+$rem-in-px: 16px;
+
+
+// Breakpoints
+// --------------------------------
+$breakpoints: (
+  'small': 640px,
+  'medium': 960px,
+  'large': 1280px
+);
+
+
+// Wrapper object widths
+// --------------------------------
+$wrapper-widths: (
+  '3x-small': 320px,
+  '2x-small': 480px,
+  'x-small': 640px,
+  'small': 960px,
+  'default': 1280px
+);
+
+
+// Gutters
+// --------------------------------
+$gutters: (
+  'x-small': 12px,
+  'small': 24px,
+  'default': 48px,
+  'large': 96px
+);
+
+
+// Grid denominators
+// --------------------------------
+$grid-denominators: 2, 3;
+
+
+// Z-indexes
+// --------------------------------
+$z-indexes: (
+  'negative': -11,
+  'default': 0,
+  'large': 11,
+  'x-large': 22,
+  '2x-large': 33,
+  '3x-large': 44,
+  '4x-large': 55,
+  'huge': 66
+);
+
+
+// Spacing units
+// --------------------------------
+$spacing-units: (
+  'none': 0,
+  '4x-small': 4px,
+  '3x-small': 8px,
+  '2x-small': 12px,
+  'x-small': 16px,
+  'small': 20px,
+  'default': 24px,
+  'large': 32px,
+  'x-large': 40px,
+  '2x-large': 48px,
+  '3x-large': 56px,
+  'huge': 64px,
+  'x-huge': 96px,
+  '2x-huge': 128px,
+  '3x-huge': 160px,
+  'giant': 192px,
+  'x-giant': 240px,
+  '2x-giant': 320px
+);
+
+
+// Border radii
+// --------------------------------
+$border-radii: (
+  'default': 0,
+  'round': 999px
+);
+
+
+// Shadows
+// --------------------------------
+$shadows: (
+  'small': (0 1px 4px),
+  'default': (0 2px 8px),
+  'large': (0 4px 16px)
+);
+
+
+// Font families
+// --------------------------------
+$font-families: (
+  'heading': ('benton-sans', 'Roboto', Helvetica, Arial, sans-serif),
+  'body': ('benton-sans', 'Roboto', Helvetica, Arial, sans-serif),
+  'system': (-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol')
+);
+
+
+// Font weight
+// --------------------------------
+$font-weights: (
+  'normal': 400,
+  'bold': 600
+);
+
+// Font-sizes
+// --------------------------------
+$font-sizes: (
+  '3x-small': 0.5rem,
+  '2x-small': 0.625rem,
+  'x-small': 0.75rem,
+  'small': 0.875rem,
+  'default': 1rem,
+  'large': 1.125rem,
+  'x-large': 1.25rem,
+  '2x-large': 1.5rem,
+  '3x-large': 1.75rem,
+  '4x-large': 2rem,
+  'huge': 3rem
+);
+
+// Heading font-sizes for small and default screens
+$heading-font-sizes: (
+  'small': (
+    1: font-size('3x-large'),
+    2: font-size('2x-large'),
+    3: font-size('x-large'),
+    4: font-size('x-large'),
+    5: font-size('large'),
+    6: font-size()
+  ),
+  'medium': (
+    1: font-size('4x-large'),
+    2: font-size('3x-large'),
+    3: font-size('2x-large'),
+    4: font-size('x-large'),
+    5: font-size('large'),
+    6: font-size()
+  ),
+  'large': (
+    1: font-size('huge'),
+    2: font-size('4x-large'),
+    3: font-size('3x-large'),
+    4: font-size('2x-large'),
+    5: font-size('x-large'),
+    6: font-size('large')
+  )
+);
+
+
+// Line heights
+// --------------------------------
+$line-heights: (
+  'none': 1,
+  'small': 1.25,
+  'default': 1.5
+);
+
+
+// Colors
+// --------------------------------
+$colors: (
+  'primary': #9D2CFF,
+  'primary-dark': #5016D9,
+  'primary-x-dark': #280B6E,
+
+  'secondary': #00C4F4,
+  'secondary-dark': #0055E3,
+  'secondary-x-dark': #0000B9,
+
+  'white': white,
+  'white-light': rgba(white, 0.7),
+  'white-x-light': rgba(white, 0.3),
+
+  'black': black,
+
+  'transparent': transparent,
+
+  // Greys
+  'grey-2x-light': #F4F4F4,
+  'grey-x-light': #E3E3E3,
+  'grey-light': #808080,
+  'grey': #666666,
+  'grey-dark': #1A1A1A,
+
+  // Messaging
+  'error': #FF5833,
+  'info': #00C4F4,
+  'warning': #FFA926,
+  'success': #23E548,
+
+  // Brands
+  'twitter': #1DA1F2,
+  'facebook': #3B5998,
+  'spotify': #1ED760,
+  'instagram': #E4405F
+);
+
+
+// Transitions
+// @link https://goo.gl/YT7XK8
+// --------------------------------
+$transitions: (
+  'standard': cubic-bezier(0.4, 0, 0.2, 1),
+  'enter': cubic-bezier(0.0, 0, 0.2, 1),
+  'leave': cubic-bezier(0.4, 0, 1, 1),
+  'bounce': cubic-bezier(0.6, 2, 0.7, 0.5)
+);

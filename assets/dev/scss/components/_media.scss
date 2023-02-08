@@ -1,0 +1,38 @@
+// Icons
+// --------------------------------
+.#{$prefix}-icon {
+  position: relative;
+  display: inline-block;
+  top: -1px; // HACK: valign adjust
+  width: font-size('x-large');
+  height: font-size('x-large');
+  vertical-align: middle;
+
+  fill: currentColor;
+
+  // Modifiers
+  &--prefix {
+    margin-right: spacing('3x-small');
+  }
+
+  &--postfix {
+    margin-left: spacing('3x-small');
+  }
+
+  &--large {
+    width: font-size('2x-large');
+    height: font-size('2x-large');
+  }
+}
+
+
+// Illustrations
+// --------------------------------
+.illustration {
+  position: relative;
+  display: block;
+  width: spacing('x-huge');
+  height: spacing('x-huge');
+
+  margin: 0 auto;
+}

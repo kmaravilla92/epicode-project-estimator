@@ -1,0 +1,44 @@
+.#{$prefix}-table {
+  // Modifiers
+  &--fixed {
+    table-layout: fixed;
+  }
+
+  &--white {
+    //
+  }
+}
+
+  .#{$prefix}-table__row {
+    //
+  }
+
+  .#{$prefix}-table__head,
+  .#{$prefix}-table__data {
+    padding: 0 0 spacing('2x-small') 0;
+
+  	border: 0;
+
+    font-size: font-size();
+    font-weight: font-weight('normal');
+    line-height: 1.25;
+    color: color('grey-light');
+
+    @include state('last-child', '.#{$prefix}-table__row') {
+      padding-bottom: spacing('none');
+    }
+
+    @include state('#{$prefix}-table--white', '.#{$prefix}-table') {
+      color: color('white');
+    }
+  }
+
+  .#{$prefix}-table__head {
+    width: spacing('2x-huge');
+
+    color: color('grey');
+  }
+
+  .#{$prefix}-table__data {
+    padding-left: spacing('x-small');
+  }

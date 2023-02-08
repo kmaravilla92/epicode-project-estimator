@@ -1,0 +1,9 @@
+{
+  "plugins": {
+    "cssnano": {},
+    "autoprefixer": {},
+    "postcss-merge-rules": {},
+    "postcss-will-change-transition": {},
+    "postcss-inline-svg": {}
+  }
+}

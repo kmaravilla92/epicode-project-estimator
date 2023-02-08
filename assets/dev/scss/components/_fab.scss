@@ -1,0 +1,12 @@
+@include extendable('fab') {
+  position: fixed;
+  bottom: spacing();
+  right: spacing();
+  z-index: z-index('huge');
+
+  padding: spacing('4x-small');
+
+  background-color: color('secondary');
+  border-radius: 999px;
+  box-shadow: shadow('large');
+}

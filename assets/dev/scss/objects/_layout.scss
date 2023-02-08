@@ -1,0 +1,88 @@
+@include extendable('layout') {
+  display: table;
+  list-style: none;
+  width: 100%;
+
+  margin: 0;
+
+  white-space: normal;
+
+
+  // Modifiers
+  @each $gutter-name, $gutter in $gutters {
+
+    &--#{$gutter-name} {
+
+      > .#{$prefix}-layout__item {
+        margin-bottom: $gutter; // Prepare for stack
+        padding-left: $gutter;
+
+        @include state('first-child') {
+          padding-left: 0;
+        }
+
+        @include state('last-child') {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &--center > .#{$prefix}-layout__item {
+    vertical-align: middle;
+  }
+
+  &--bottom > .#{$prefix}-layout__item {
+    vertical-align: bottom;
+  }
+
+  &--equal {
+    table-layout: fixed;
+  }
+
+  &--flush > .#{$prefix}-layout__item {
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+
+  &--stack {
+
+    @include responsive-classes(true) {
+      display: block;
+
+      > .#{$prefix}-layout__item {
+        display: block;
+        width: auto;
+
+        padding-left: 0;
+
+        white-space: normal;
+      }
+    }
+  }
+}
+
+
+  @include extendable('layout__item') {
+    position: relative;
+    display: table-cell;
+    vertical-align: top;
+
+    margin-bottom: gutter(); // Prepare for stack
+    padding-left: gutter();
+
+    @include state('first-child') {
+      padding-left: 0;
+    }
+
+    @include state('last-child') {
+      margin-bottom: 0;
+    }
+
+
+    // Modifiers
+    &--fixed {
+      width: 1px;
+      white-space: nowrap;
+    }
+  }

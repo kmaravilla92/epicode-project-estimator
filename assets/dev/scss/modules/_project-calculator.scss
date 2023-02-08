@@ -1,0 +1,152 @@
+.epc-multipliable-answer {
+  display: none;
+
+  width: spacing('3x-huge');
+
+  margin-top: spacing('2x-small');
+  margin-left: spacing('x-small');
+
+  @at-root {
+
+    .epc-calc-input:checked + label + .epc-multipliable-answer {
+      display: block;
+    }
+  }
+}
+
+.epc-costs-fab {
+  bottom: spacing('small');
+  left: off-screen(); right: initial;
+  display: none;
+  min-width: spacing('3x-huge');
+  transform: scale(0.96);
+  transform-origin: left center;
+
+  padding-right: spacing();
+
+  cursor: pointer;
+
+  opacity: 0;
+
+  transition:
+    left 0s 0.2s,
+    transform 0.2s transition(),
+    opacity 0.2s transition();
+
+  @include breakpoint('medium', 'down') {
+    display: block;
+  }
+
+  @include state('is-active') {
+    left: spacing();
+    transform: none;
+
+    opacity: 1;
+
+    transition:
+      left 0s,
+      transform 0.2s transition(),
+      opacity 0.2s transition();
+  }
+
+  @include state('modal-is-active', 'body') {
+    left: off-screen();
+    transform: scale(0.96);
+
+    opacity: 0;
+
+    transition:
+      left 0s 0.2s,
+      transform 0.2s transition(),
+      opacity 0.2s transition();
+  }
+}
+
+  .epc-costs-fab__icon {
+    width: spacing('large');
+    height: spacing('large');
+
+    background-color: color('white');
+    border-radius: 999px;
+
+    line-height: 2;
+    text-align: center;
+    color: color('secondary');
+  }
+
+.epc-calc-input {
+
+  // Modifiers
+  &--project {
+    height: spacing('huge');
+
+    padding: 0 spacing('small');
+
+    font-size: font-size('x-large');
+    line-height: spacing('huge');
+  }
+}
+
+// --------------------------------
+.epc-form {
+  position: relative;
+}
+
+  .epc-input.epc-form__valid {
+    border: 1px solid color('success');
+  }
+
+  .epc-input.epc-form__invalid {
+    border: 1px solid color('error');
+  }
+
+  label.epc-form__invalid {
+    position: absolute;
+    top: 17px; right: spacing('small');
+
+    font-weight: 700;
+    font-size: font-size('x-small');
+    color: color('error');
+    line-height: 1;
+  }
+
+  .epc-form-valid-icon {
+    display: none;
+  }
+
+  .epc-input.epc-form__valid ~ .epc-form-valid-icon {
+    display: block;
+  }
+
+  .epc-form-message {
+    position: relative;
+    display: none;
+
+    margin-top: spacing();
+    padding: spacing('2x-small');
+
+    pointer-events: none;
+
+    font-size: font-size('small');
+    font-weight: 700;
+
+    // Modifiers
+    &--error {
+      background-color: rgba(color('error'), 0.1);
+
+      color: color('error');
+    }
+
+    &--success {
+      background-color: rgba(color('success'), 0.1);
+
+      color: color('success');
+    }
+
+    @include breakpoint('small') {
+      display: block;
+
+      margin-top: spacing();
+      margin-left: 0;
+    }
+  }

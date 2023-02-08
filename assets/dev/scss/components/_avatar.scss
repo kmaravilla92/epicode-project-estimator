@@ -1,0 +1,22 @@
+.#{$prefix}-avatar {
+  position: relative;
+  width: spacing('huge');
+  height: spacing('huge');
+  overflow: hidden;
+  z-index: z-index('large');
+
+  background-color: color('grey-2x-light');
+  border: 2px solid white;
+  border-radius: border-radius('round');
+  box-shadow: shadow();
+
+  // Modifiers
+  &--small {
+    width: spacing('2x-large');
+    height: spacing('2x-large');
+  }
+
+  &--bordered {
+    border: 2px solid white;
+  }
+}

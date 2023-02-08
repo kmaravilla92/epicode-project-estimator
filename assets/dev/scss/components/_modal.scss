@@ -1,0 +1,71 @@
+.#{$prefix}-modal {
+  position: fixed;
+  top: -999999px; left: 50%;
+  width: map-get($wrapper-widths, 'x-small');
+  max-height: 80%;
+  z-index: z-index('huge');
+  overflow: auto;
+
+  transform:
+    translateX(-50%)
+    scale(1.04);
+
+  padding: spacing('2x-large') spacing();
+
+  background-color: white;
+  box-shadow: shadow('large');
+
+  opacity: 0;
+
+  transition:
+    top 0s 0.2s,
+    transform 0.2s transition('leave'),
+    opacity 0.2s transition('leave');
+
+
+  @include breakpoint(848px, 'down') {
+    left: spacing(); right: spacing();
+    width: auto;
+    max-height: 90%;
+
+    transform: scale(1.02);
+  }
+
+
+  @include state('is-active') {
+    top: 10%;
+
+    transform: translateX(-50%);
+
+    opacity: 1;
+
+    transition:
+      top 0s,
+      transform 0.2s transition('enter'),
+      opacity 0.2s transition('enter');
+
+    @include breakpoint(848px, 'down') {
+      top: 5%;
+
+      transform: none;
+    }
+  }
+}
+
+  .#{$prefix}-modal__close {
+    position: absolute;
+    display: block;
+    top: spacing('2x-small'); right: spacing('2x-small');
+    z-index: z-index('large');
+  }
+
+
+// Link
+// --------------------------------
+.#{$prefix}-modal-link {
+
+  // Modifiers
+  &--zoom {
+    cursor: zoom-in;
+  }
+}

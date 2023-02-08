@@ -1,0 +1,269 @@
+.has-#{$prefix} {
+  // Reset
+  // --------------------------------
+  blockquote,
+  figure,
+  form {
+    margin: 0;
+  	padding: 0;
+
+  	border: 0;
+  }
+
+
+  // Box-sizing reset
+  // --------------------------------
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+
+  // HTML5 display fallback for older browsers
+  // --------------------------------
+  article,
+  aside,
+  figcaption,
+  figure,
+  footer,
+  fieldset,
+  header,
+  hgroup,
+  main,
+  menu,
+  nav,
+  section {
+  	display: block;
+  }
+
+  // Outline reset
+  a,
+  button {
+
+  	@include state(('active', 'focus')) {
+  		outline: 0;
+  	}
+  }
+
+
+  // Typography
+  // --------------------------------
+  h1, h2, h3, h4, h5, h6 {
+  	margin: 0;
+
+  	font-family: font-family('heading');
+  	color: color('primary-x-dark');
+
+  	@include state('last-child') {
+  		margin-bottom: 0;
+  	}
+  }
+
+  @each $heading, $font-size in map-get($heading-font-sizes, 'large') {
+    $margin-bottom: if($heading < 3, '2x-small', '2x-small');
+
+  	h#{$heading} {
+      margin-bottom: spacing($margin-bottom);
+
+  		font-size: $font-size;
+      font-weight: font-weight();
+  		line-height: 1 + ($heading / 20);
+
+  		@include breakpoint('medium') {
+  			font-size: map-get(map-get($heading-font-sizes, 'medium'), $heading);
+  		}
+
+  		@include breakpoint('small') {
+  			font-size: map-get(map-get($heading-font-sizes, 'small'), $heading);
+  		}
+  	}
+  }
+
+  p {
+    margin: 0 0 spacing();
+
+  	@include state('last-child') {
+  		margin-bottom: 0;
+  	}
+  }
+
+  a {
+  	text-decoration: none;
+  	color: color('secondary');
+
+  	@include state(('hover', 'focus')) {
+  		text-decoration: underline;
+  		color: color('secondary-dark');
+  	}
+  }
+
+  address {
+  	font-size: font-size('small');
+  	font-style: normal;
+  }
+
+  // Primary color as selection background-color
+  *::selection {
+    background-color: color('secondary');
+
+  	color: white;
+  }
+
+  hr {
+  	margin: 0;
+
+  	border: 0;
+  	border-bottom: 1px solid color('grey-x-light');
+  }
+
+
+  // Lists
+  // --------------------------------
+  ol,
+  ul {
+  	list-style: none;
+
+  	margin: 0 0 spacing();
+  	padding: 0;
+  }
+
+
+  // Table
+  // --------------------------------
+  table {
+  	border-collapse: collapse;
+  	border-spacing: 0;
+  	width: 100%;
+  }
+
+  th,
+  td {
+  	padding: 0;
+  	border: 0;
+
+  	text-align: left;
+  	font-size: font-size('small');
+  	line-height: 36px;
+  }
+
+  th {
+  	color: color('primary-x-dark');
+  }
+
+
+  // Forms
+  // --------------------------------
+  [type='text'],
+  [type='number'],
+  [type='tel'],
+  [type='email'],
+  [type='password'],
+  [type='search'],
+  [type='submit'],
+  textarea,
+  button,
+  select {
+  	appearance: none; // Reset appearance
+
+  	font-family: inherit;
+  	font-size: font-size();
+  }
+
+  [type='text'],
+  [type='number'],
+  [type='tel'],
+  [type='email'],
+  [type='password'],
+  [type='search'],
+  [type='submit'],
+  textarea,
+  select {
+  	width: 100%; max-width: 100%;
+  }
+
+  select {
+
+  	// Hide IE dropdown arrows
+  	&::-ms-expand {
+  		display: none;
+  	}
+  }
+
+  button,
+  [type='submit'],
+  [type='checkbox'],
+  [type='radio'] {
+  	display: inline-block;
+  	width: auto;
+
+    cursor: pointer;
+  }
+
+  button,
+  [type='submit'] {
+  	margin: 0;
+  	padding: 0;
+
+    background-color: transparent;
+  	border: 0;
+
+    text-align: left;
+  }
+
+  [type='checkbox'],
+  [type='radio'] {
+  	vertical-align: middle;
+
+  	margin: 0;
+  }
+
+  textarea {
+  	resize: none;
+  }
+
+  label {
+  	display: inline-block;
+
+  	margin: 0;
+  	padding: 0;
+
+  	@include state('focus') {
+  		outline: 0;
+  	}
+  }
+
+  [for] {
+    cursor: pointer;
+  }
+
+  fieldset {
+  	margin: 0;
+  	padding: 0;
+
+  	border: 0;
+  }
+
+  *::placeholder {
+  	color: color('grey-light');
+  }
+
+
+  // Media
+  // --------------------------------
+  iframe {
+    display: block;
+    max-width: 100%;
+
+    border: 0;
+  }
+
+  img {
+  	max-width: 100%;
+  	height: auto;
+    display: inline-block;
+  	vertical-align: middle;
+
+    border: 0;
+  }
+}

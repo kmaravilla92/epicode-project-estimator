@@ -1,0 +1,181 @@
+// Position
+// --------------------------------
+@include utility('position', relative, 'relative');
+
+
+// Dimensions
+// --------------------------------
+@include utility('width', 100%, 'full');
+
+
+// Display
+// --------------------------------
+.#{$prefix}-u-display {
+
+  &--none {
+    display: none !important;
+
+    @include responsive-classes(true) {
+      display: none !important;
+    }
+  }
+
+  &--inline-block {
+    display: inline-block !important;
+  }
+
+  &--block {
+    display: block !important;
+
+    @include responsive-classes {
+      display: block !important;
+    }
+  }
+}
+
+
+// Overflow
+// --------------------------------
+@include utility('overflow', hidden, 'hidden');
+
+
+// Margin
+// --------------------------------
+@at-root { // Create a scope
+  $directions: 'top', 'bottom', 'left', 'right';
+  // Keys to include from global spacing-unit map
+  $include: 'none', '4x-small', '2x-small', 'x-large', '2x-large';
+
+  @include utility('margin', 0, 'none');
+
+  @each $direction in $directions {
+    @include utility('margin-#{$direction}', spacing());
+
+    @each $margin in $include {
+      @include utility('margin-#{$direction}', spacing($margin), $margin);
+    }
+  }
+}
+
+
+// Padding
+// --------------------------------
+@at-root { // Create a scope
+  $directions: 'top', 'bottom', 'left', 'right';
+  // Keys to include from global spacing-unit map
+  $include: 'none', '2x-small', 'x-large', '2x-large';
+
+  @include utility('padding', spacing());
+
+  @each $padding in $include {
+    @include utility('padding', spacing($padding), $padding);
+  }
+
+  @each $direction in $directions {
+    @include utility('padding-#{$direction}', spacing());
+
+    @each $padding in $include {
+      @include utility('padding-#{$direction}', spacing($padding), $padding);
+    }
+  }
+}
+
+
+// Background color
+// --------------------------------
+@at-root { // Create a scope
+  // Keys to include from global color map
+  $include: 'grey-2x-light', 'white', 'secondary';
+
+  @each $background-color in $include {
+    @include utility('background-color', color($background-color), $background-color);
+  }
+}
+
+
+// Box shadow
+// --------------------------------
+@include utility('box-shadow', (0 1px 2px rgba(black, 0.1)));
+
+
+// Text align
+// --------------------------------
+.#{$prefix}-u-text-align {
+
+  &--left {
+    text-align: left !important;
+
+    @include responsive-classes {
+      text-align: left !important;
+    }
+  }
+
+  &--center {
+    text-align: center !important;
+
+    @include responsive-classes {
+      text-align: center !important;
+    }
+  }
+
+  &--right {
+    text-align: right !important;
+
+    @include responsive-classes {
+      text-align: right !important;
+    }
+  }
+}
+
+
+// Text decoration
+// --------------------------------
+@include utility('text-decoration', none, 'none');
+
+
+// Font-family
+// --------------------------------
+@include utility('font-family', font-family('heading'), 'heading');
+@include utility('font-family', font-family('body'), 'body');
+
+
+// Font-size
+// --------------------------------
+@at-root { // Create a scope
+  // Keys to include from global font-size map
+  $include: 'x-small', 'small', 'large', 'x-large';
+
+  @include utility('font-size', font-size());
+
+  @each $font-size in $include {
+    @include utility('font-size', font-size($font-size), $font-size);
+  }
+}
+
+@include utility('font-size', inherit, 'inherit');
+
+
+// Font-weight
+// --------------------------------
+@include utility('font-weight', font-weight('bold'), 'bold');
+@include utility('font-weight', font-weight(), 'normal');
+
+
+// Line-height
+// --------------------------------
+@include utility('line-height', 1, 'none');
+@include utility('line-height', line-height('small'), 'small');
+
+
+// Color
+// --------------------------------
+@at-root { // Create a scope
+  // Keys to include from global color map
+  $include: 'primary', 'primary-dark', 'primary-x-dark', 'secondary', 'secondary-dark', 'error', 'success', 'warning', 'white', 'white-light', 'grey', 'grey-light';
+
+  @each $color in $include {
+    @include utility('color', color($color), $color);
+  }
+}
+
+@include utility('color', inherit, 'inherit');

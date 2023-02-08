@@ -1,0 +1,26 @@
+.#{$prefix}-overlay {
+  position: fixed;
+  top: 0; bottom: 100%; left: 0; right: 0;
+  z-index: z-index('4x-large');
+
+  background-color: rgba(color('grey-dark'), .6);
+
+  opacity: 0;
+
+  transition:
+    bottom 0s 0.4s,
+    opacity 0.4s transition();
+
+  cursor: pointer;
+
+
+  @include state('is-active') {
+    bottom: 0;
+
+    opacity: 1;
+
+    transition:
+      bottom 0s,
+      opacity 0.4s transition();
+  }
+}

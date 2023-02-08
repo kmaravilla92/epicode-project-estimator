@@ -1,0 +1,193 @@
+/* Resets */
+body {
+  font-family: Arial, Helvetica;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+ul,
+ol {
+  padding: 0;
+
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+figure {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+
+/* Utilities */
+.u-padding-top--2x-small {
+  padding-top: 12px;
+}
+
+.u-padding-left--2x-small {
+  padding-left: 12px;
+}
+
+.u-margin-top--x-huge {
+  margin-top: 96px;
+}
+
+.u-margin-top--large {
+  margin-top: 32px;
+}
+
+.u-text-align--center {
+  text-align: center;
+}
+
+.u-font-size--small {
+  font-size: 0.875rem;
+}
+
+.u-font-size--4x-large {
+  font-size: 2rem;
+}
+
+.u-font-size--huge {
+  font-size: 3rem;
+}
+
+.u-text-align--right {
+  text-align: right;
+}
+
+.u-color--primary {
+  color: #9D2CFF;
+}
+
+.u-color--grey {
+  color: #666;
+}
+
+.u-color--white {
+  color: #fff;
+}
+
+/* Components */
+.table {
+  width: 100%;
+
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+  .table--fixed {
+    table-layout: fixed;
+  }
+
+.page-break {
+  page-break-before: always;
+  position: relative;
+
+  margin-top: 48px;
+}
+
+.hr {
+  display: block;
+
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.root {
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+.logo {
+  margin-top: -48px;
+}
+
+.project-title {
+  margin-top: 128px;
+
+  font-size: 3rem;
+}
+
+.project-subtitle {
+  margin-top: 32px;
+
+  font-size: 1.5rem;
+
+  color: #666666;
+}
+
+.project-date {
+  margin-top: 96px;
+
+  font-size: 1.5rem;
+
+  color: #666666;
+}
+
+.extra {}
+
+.extra-image {
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+  text-align: center;
+}
+
+.page-number {
+  text-align: center;
+}
+
+.page-number::before {
+  content: "Page " counter(page);
+}
+
+.page-footer {
+  position: fixed;
+  right: 0; bottom: 24px; left: 0;
+  z-index: -11;
+
+  margin: 0 auto;
+  padding-top: 12px;
+
+  border-top: 1px solid #666;
+}
+
+.closing-footer {
+  position: absolute;
+  right: -94px; bottom: -48px; left: -94px;
+  z-index: 11;
+  height: 192px;
+
+  padding: 24px 48px;
+
+  background-color: #5016D9;
+}
+
+.closing-footer__info {
+  padding-left: 48px;
+}
+
+.closing-footer__pixel {
+  position: absolute;
+  top: 0; right: -94px; bottom: -48px; left: -94px;
+  z-index: 22;
+  width: 100%;
+  height: 192px;
+
+  padding: 24px 48px;
+
+  background-repeat: repeat;
+
+  pointer-events: none;
+}

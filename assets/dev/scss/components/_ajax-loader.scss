@@ -1,0 +1,45 @@
+@include extendable('ajax-loader') {
+  position: absolute;
+  top: 100%; bottom: 0; left: 0; right: 0;
+  z-index: z-index('large');
+
+  background-color: rgba(white, 0.6);
+
+  opacity: 0;
+
+  transition:
+    top 0s 0.2s,
+    opacity 0.2s transition();
+  will-change:
+    top,
+    opacity;
+
+
+  @include state('is-active') {
+    top: 0;
+
+    opacity: 1;
+
+    transition:
+      top 0s,
+      opacity 0.2s transition();
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: calc(50% - #{spacing()}); right: -99999px;
+    width: spacing('2x-large');
+    height: spacing('2x-large');
+
+    border: 2px solid color('grey-2x-light');
+    border-left-color: color('secondary');
+    border-radius: 999px;
+
+    @include state('is-active') {
+      right: calc(50% - #{spacing()});
+
+      animation: rotate 0.4s linear infinite;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+    "require": {
+      "dompdf/dompdf": "^0.8.3"
+    },
+    "autoload": {
+      "files": [
+        "includes/constants.php",
+        "includes/helpers/icon-functions.php",
+        "includes/helpers/view-functions.php"
+      ],
+      "psr-0": {
+        "": "includes/"
+      }
+    }
+}

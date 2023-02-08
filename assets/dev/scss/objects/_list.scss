@@ -1,0 +1,81 @@
+@include extendable('list') {
+  list-style: none;
+
+  margin: 0;
+
+  // Modifiers
+  &--inline {
+    display: block;
+    list-style: none;
+    vertical-align: top;
+
+    margin-bottom: -#{gutter('small')};
+    padding: 0;
+
+    font-size: 0;
+
+
+    > .#{$prefix}-list__item {
+      display: inline-block;
+      vertical-align: top;
+
+      margin-right: gutter('small');
+      margin-bottom: gutter('small');
+
+      font-size: font-size();
+      line-height: inherit;
+
+      @include state('last-child') {
+        margin-bottom: gutter('small');
+        margin-right: 0;
+      }
+    }
+  }
+
+  &--center > .#{$prefix}-list__item {
+    vertical-align: middle;
+  }
+
+  @each $gutter-name, $gutter in $gutters {
+
+    &--#{$gutter-name} {
+      margin-bottom: -$gutter;
+
+      > .#{$prefix}-list__item {
+          margin-bottom: $gutter;
+
+        @include state('last-child') {
+          margin-bottom: $gutter;
+        }
+      }
+
+      &.#{$prefix}-list--inline {
+        margin-right: $gutter;
+      }
+    }
+  }
+
+  &--flush {
+    margin-bottom: 0;
+
+    > .#{$prefix}-list__item {
+      margin-bottom: 0;
+      margin-right: 0;
+
+      @include state('last-child') {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+
+  @include extendable('list__item') {
+    margin-bottom: 6px;
+
+    line-height: 1.25;
+
+    @include state('last-child') {
+      margin-bottom: 0;
+    }
+  }

@@ -1,0 +1,148 @@
+// Make an element look like a heading
+// --------------------------------
+@include extendable('title') {
+	display: block;
+
+	font-family: font-family('heading');
+  line-height: 1.35;
+  color: color('primary-x-dark');
+
+	@include state('last-child') {
+		margin-bottom: 0;
+	}
+
+
+	// Modifiers
+	@each $heading, $font-size in map-get($heading-font-sizes, 'large') {
+    $margin-bottom: if($heading < 3, '2x-small', '2x-small');
+
+		&--#{$heading} {
+			margin-bottom: spacing($margin-bottom);
+
+			font-size: $font-size;
+      font-weight: font-weight();
+			line-height: 1 + ($heading / 20);
+
+			@include breakpoint('medium') {
+				font-size: map-get(map-get($heading-font-sizes, 'medium'), $heading);
+			}
+
+			@include breakpoint('small') {
+				font-size: map-get(map-get($heading-font-sizes, 'small'), $heading);
+			}
+		}
+	}
+
+	&--super,
+	&--sub {
+		font-weight: font-weight();
+		color: inherit;
+	}
+}
+
+
+// Meta
+// --------------------------------
+@include extendable('meta') {
+  display: inline-block;
+
+  line-height: line-height('x-small');
+}
+
+
+// Link
+// --------------------------------
+@include extendable('link') {
+	display: inline-block;
+
+  line-height: line-height('x-small');
+	color: color('secondary');
+
+	@include state(('hover', 'focus')) {
+		text-decoration: none;
+		color: color('secondary-dark');
+	}
+
+
+	// Modifiers
+  &--underline {
+    box-shadow: 0 1px currentColor;
+  }
+
+  &--primary-x-dark {
+    color: color('primary-x-dark');
+
+    @include state(('hover', 'focus')) {
+			color: color('primary-dark');
+		}
+  }
+
+	&--white {
+		color: white;
+
+		@include state(('hover', 'focus')) {
+			color: color('white-light');
+		}
+	}
+
+  &--white-light {
+    color: color('white-light');
+
+		@include state(('hover', 'focus')) {
+      color: white;
+		}
+	}
+
+  &--grey-light {
+		color: color('grey-light');
+
+		@include state(('hover', 'focus')) {
+			color: color('grey');
+		}
+	}
+
+  &--grey-dark {
+		color: color('grey-dark');
+
+		@include state(('hover', 'focus')) {
+			color: color('grey');
+		}
+	}
+}
+
+
+// Message
+// --------------------------------
+@include extendable('message') {
+  display: block;
+
+  text-align: left;
+  font-size: font-size('small');
+  font-weight: font-weight('medium');
+  line-height: line-height('x-small');
+}
+
+
+// Horizontal rule
+// --------------------------------
+.#{$prefix}-hr {
+	position: relative;
+	display: block;
+
+	border-bottom: 1px solid color('grey-x-light');
+
+  // Modifiers
+  &--white {
+    border-color: color('white-x-light');
+  }
+}
+
+
+// Blurred text
+// --------------------------------
+.blur-text {
+  font-weight: font-weight('bold');
+
+  filter: blur(2px);
+  opacity: 0.8;
+}

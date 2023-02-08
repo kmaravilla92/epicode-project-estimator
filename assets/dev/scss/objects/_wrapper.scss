@@ -1,0 +1,23 @@
+.#{$prefix}-wrapper {
+  max-width: map-get($wrapper-widths, 'default');
+
+  margin-left: auto;
+  margin-right: auto;
+
+
+  // Modifiers
+  @each $wrapper, $width in $wrapper-widths {
+
+    &--#{$wrapper} {
+      max-width: $width;
+    }
+  }
+
+  &--left {
+    margin-left: 0;
+  }
+
+  &--right {
+    margin-right: 0;
+  }
+}

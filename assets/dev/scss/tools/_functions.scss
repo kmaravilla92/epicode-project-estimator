@@ -1,0 +1,70 @@
+// Return value from global variable maps
+// --------------------------------
+@function gutter($key: 'default', $unit: 'px') {
+  $gutter: map-get($gutters, $key);
+
+  // @if $unit == 'em' {
+  //   $gutter: em($gutter);
+  // }
+
+  @return $gutter;
+}
+
+@function wrapper($key: 'default') {
+  @return map-get($wrapper-widths, $key);
+}
+
+@function spacing($key: 'default') {
+  @return map-get($spacing-units, $key);
+}
+
+@function z-index($key: 'default') {
+  @return map-get($z-indexes, $key);
+}
+
+@function border-radius($key: 'default') {
+  @return map-get($border-radii, $key);
+}
+
+@function shadow($key: 'default') {
+  @return map-get($shadows, $key) rgba(black, .1);
+}
+
+@function font-family($key) {
+  @return map-get($font-families, $key);
+}
+
+@function font-size($key: 'default') {
+  @return map-get($font-sizes, $key);
+}
+
+@function font-weight($key: 'normal') {
+  @return map-get($font-weights, $key);
+}
+
+@function line-height($key: 'default') {
+  @return map-get($line-heights, $key);
+}
+
+@function color($key: 'grey') {
+  @return map-get($colors, $key);
+}
+
+@function transition($key: 'standard') {
+  @return map-get($transitions, $key);
+}
+
+@function off-screen() {
+  @return -999999px;
+}
+
+
+// Utilities
+// --------------------------------
+@function to-str($value) {
+  @return $value + '';
+}
+
+@function em($value, $context: $rem-in-px) {
+  @return #{$value / $context}em;
+}

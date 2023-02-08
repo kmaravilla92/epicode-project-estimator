@@ -1,0 +1,23 @@
+.#{$prefix}-background {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  z-index: z-index('negative');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+
+  // Modifiers
+  &--fixed {
+    background-attachment: fixed;
+  }
+
+  &--dark::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+
+    background: linear-gradient(45deg, rgba(black, 0.6), rgba(black, 0));
+  }
+}

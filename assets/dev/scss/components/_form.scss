@@ -1,0 +1,257 @@
+// Label
+// --------------------------------
+@include extendable('label') {
+  display: block;
+
+  text-align: left;
+  font-size: font-size('small');
+  font-weight: 700;
+  line-height: 1;
+  color: color('grey-light');
+}
+
+
+// Inputs
+// --------------------------------
+@include extendable('input') {
+  display: block;
+  height: spacing('x-large');
+
+  padding: 0 spacing('2x-small');
+
+  background-color: white;
+  border: 1px solid color('grey-x-light');
+	border-radius: border-radius();
+  box-shadow: none;
+
+  font-size: font-size('small');
+  line-height: 38px;
+  text-overflow: ellipsis;
+  color: color('primary-x-dark');
+
+	@include state('focus') {
+    background-color: white;
+		border-color: color('secondary');
+    outline: 0;
+	}
+
+
+  // Modifiers
+  &--textarea {
+    height: spacing('3x-huge');
+
+    padding-top: spacing('2x-small');
+    padding-bottom: spacing('2x-small');
+
+    line-height: 1.5;
+  }
+}
+
+
+@include extendable('select') {
+  @extend %#{$prefix}-input;
+
+  padding-right: 36px;
+
+  background-image: url('#{$image-path}/angle-down.svg');
+  background-size: spacing('2x-small');
+  background-position: right spacing('2x-small') center;
+  background-repeat: no-repeat;
+
+  cursor: pointer;
+
+  @include state(('disabled', 'is-disabled')) {
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+}
+
+
+// Input group
+// --------------------------------
+.input-group {
+  @extend %#{$prefix}-layout;
+}
+
+  .#{$prefix}-input-group__item {
+    @extend %#{$prefix}-layout__item;
+
+    padding: 0;
+
+
+    // Modifiers
+    &--fixed {
+      @extend %#{$prefix}-layout__item--fixed;
+    }
+  }
+
+  .#{$prefix}-input-group__input {
+    border-left-style: none;
+
+    @include state('first-child', '.input-group__item') {
+      border-left-style: solid;
+    }
+
+    @include state('focus') {
+      border-left-style: solid;
+    }
+  }
+
+  .#{$prefix}-input-group__button {
+
+    @include specify {
+      font-size: font-size();
+      line-height: 38px;
+    }
+  }
+
+
+// Affix input
+// --------------------------------
+.#{$prefix}-affix-input {
+  position: relative;
+
+
+  // Modifiers
+  &--prefix {
+
+    .#{$prefix}-affix-input__input {
+      padding-right: 0;
+      padding-left: spacing('x-large');
+    }
+
+    .#{$prefix}-affix-input__affix {
+      left: 1px; right: auto;
+    }
+  }
+
+  // Default is suffix
+}
+
+  .#{$prefix}-affix-input__input {
+    padding-right: spacing('x-large');
+  }
+
+  .#{$prefix}-affix-input__affix {
+    position: absolute;
+    top: 1px; right: 1px;
+    z-index: z-index('large');
+    width: spacing('x-large');
+
+    text-align: center;
+    line-height: 38px;
+    color: color('grey-light');
+
+    &--right {
+      left: auto !important; right: 1px !important;
+    }
+  }
+
+
+// Number inputs
+// --------------------------------
+.#{$prefix}-number-input {
+  position: relative;
+  z-index: z-index();
+  width: spacing('3x-large'); min-width: spacing('3x-large');
+}
+
+  .#{$prefix}-number-input__input {
+    position: relative;
+    z-index: z-index('negative');
+
+    padding-right: spacing();
+
+    background-color: white;
+
+    font-family: font-family('heading');
+    line-height: 46px;
+
+
+    // Hide browser controls
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      appearance: none;
+
+      margin: 0; // NOTE: Some browsers don't hide margins
+    }
+  }
+
+  .#{$prefix}-number-input__incr,
+  .#{$prefix}-number-input__decr {
+    position: absolute;
+    right: 0;
+    width: spacing();
+
+    padding: 0;
+
+    text-align: center;
+    font-family: font-family('body');
+    font-size: font-size('small');
+    line-height: 15px;
+    color: color('grey-light');
+
+    @include state(('hover', 'focus')) {
+      color: color('grey');
+    }
+  }
+
+  .#{$prefix}-number-input__incr {
+    top: 0;
+
+    padding-top: 5px;
+  }
+
+  .#{$prefix}-number-input__decr {
+    bottom: 0;
+
+    padding-bottom: 5px;
+  }
+
+// Ajax loader
+// --------------------------------
+@include extendable('ajax-loader') {
+  position: absolute;
+  top: 100%; bottom: 0; left: 0; right: 0;
+  z-index: z-index('large');
+
+  background-color: rgba(white, 0.6);
+
+  opacity: 0;
+
+  transition:
+    top 0s 0.2s,
+    opacity 0.2s transition();
+  will-change:
+    top,
+    opacity;
+
+
+  @include state('is-active') {
+    top: 0;
+
+    opacity: 1;
+
+    transition:
+      top 0s,
+      opacity 0.2s transition();
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: spacing('2x-small'); right: -99999px;
+    width: spacing('large');
+    height: spacing('large');
+
+    border: 2px solid color('grey-2x-light');
+    border-left-color: color('primary');
+    border-radius: 999px;
+
+    @include state('is-active') {
+      right: calc(50% - 16px);
+
+      animation: rotate 0.4s linear infinite;
+    }
+  }
+}

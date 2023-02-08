@@ -1,0 +1,22 @@
+.#{$prefix}-valign {
+  display: table;
+  list-style: none;
+  width: 100%;
+  height: 100%;
+}
+
+  // Elements
+  .#{$prefix}-valign__item {
+    display: table-cell;
+    width: 100%;
+    vertical-align: middle;
+  }
+
+  // Modifiers
+  .#{$prefix}-valign--top .#{$prefix}-valign__item {
+    vertical-align: top;
+  }
+
+  .#{$prefix}-valign--bottom .#{$prefix}-valign__item {
+    vertical-align: bottom;
+  }
